@@ -1,0 +1,82 @@
+:root {
+    --PRIMARY-BACKGROUND-COLOR: #293241;
+    --TRAY-BG-COLOR: #3D5A80;
+    --ITEM-COLOR: #EE6C4D;
+
+    --TRAY-HEIGHT: 480px;
+    --TRAY-WIDTH: 640px;
+    --TRAY-MIN-HEIGHT: 320px;
+    --TRAY-MIN-WIDTH: 240px;
+    --TRAY-MAX-HEIGHT: 1280px;
+    --TRAY-MAX-WIDTH: 720px;
+
+    --ITEM-HEIGHT: 320px;
+    --ITEM-WIDTH: 240px;
+    --ITEM-MIN-HEIGHT: 240px;
+    --ITEM-MIN-WIDTH: 160px;
+    --ITEM-MAX-HEIGHT: 640px;
+    --ITEM-MAX-WIDTH: 480px;
+
+    
+}
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--PRIMARY-BACKGROUND-COLOR);
+
+    display: flex;
+    min-height: 100vh;
+    gap: 20px;
+    padding: 10px;
+}
+
+.sandbox {
+    width: 67%;
+
+    border: 1px solid #fff;
+    border-radius: 20px;
+}
+
+.control-panel {
+    width: 33%;
+    padding: 20px;
+
+    border: 1px solid #fff;
+    border-radius: 20px;
+}
+
+.control-panel-header {
+    color: #fff;
+}
+
+.tray {
+    background-color: var(--TRAY-BG-COLOR);
+    min-height: var(--TRAY-MIN-HEIGHT);
+    min-width: var(--TRAY-MIN-WIDTH);
+
+    max-height: var(--TRAY-MAX-HEIGHT);
+    max-width: var(--TRAY-MAX-WIDTH);
+
+    height: var(--TRAY-HEIGHT);
+    width: var(--TRAY-WIDTH);
+    border-radius: 20px;
+}
+.item {
+    background-color: var(--ITEM-COLOR);
+    min-height: var(--ITEM-MIN-HEIGHT);
+    min-width: var(--ITEM-MIN-WIDTH);
+
+    max-height: var(--ITEM-MAX-HEIGHT);
+    max-width: var(--ITEM-MAX-WIDTH);
+
+    height: var(--ITEM-HEIGHT);
+    width: var(--ITEM-WIDTH);
+    border-radius: 20px;
+}
+
+
