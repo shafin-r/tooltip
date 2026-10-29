@@ -10,7 +10,7 @@
     --TRAY-MAX-HEIGHT: 1280px;
     --TRAY-MAX-WIDTH: 720px;
 
-    --ITEM-HEIGHT: 320px;
+    --ITEM-HEIGHT: 240px;
     --ITEM-WIDTH: 240px;
     --ITEM-MIN-HEIGHT: 240px;
     --ITEM-MIN-WIDTH: 160px;
@@ -64,7 +64,36 @@ body {
     height: var(--TRAY-HEIGHT);
     width: var(--TRAY-WIDTH);
     border-radius: 20px;
+    position: relative;
 }
+
+.tray-handle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    padding: 3px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--TRAY-BG-COLOR);
+
+    transition-duration: 200ms;
+
+    border-radius: 5px;
+}
+
+.tray-handle:hover {
+    scale: 1.1;
+    cursor: grab;
+    border: 1px solid #f1d49d;
+}
+
+.tray-handle:active {
+    cursor: grabbing;
+}
+
 .item {
     background-color: var(--ITEM-COLOR);
     min-height: var(--ITEM-MIN-HEIGHT);
