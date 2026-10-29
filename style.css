@@ -51,6 +51,7 @@ body {
 
 .control-panel-header {
     color: #fff;
+    padding-bottom: 20px;
 }
 
 .tray {
@@ -91,7 +92,9 @@ body {
 }
 
 .tray-handle:active {
+    scale: 1.1;
     cursor: grabbing;
+    border: 1px solid #f1d49d;
 }
 
 .item {
@@ -105,6 +108,22 @@ body {
     height: var(--ITEM-HEIGHT);
     width: var(--ITEM-WIDTH);
     border-radius: 20px;
+}
+
+.tooltip-position-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.tooltip-position-selector {
+    padding: 6px;
+
+    border-radius: 20px;
+}
+
+.tooltip-position-selector-label {
+    color: #fff;
 }
 
 
