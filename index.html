@@ -8,27 +8,53 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-      <section class="sandbox">
-        <div class="tray">
-          <div class="tray-handle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip-vertical preview-icon"><circle cx="9" cy="12" r="1"/><circle cx="9" cy="5" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+    <section class="sandbox">
+      <div id="tray" class="tray">
+        <div id="tray-handle" class="tray-handle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-grip-vertical preview-icon"
+          >
+            <circle cx="9" cy="12" r="1" />
+            <circle cx="9" cy="5" r="1" />
+            <circle cx="9" cy="19" r="1" />
+            <circle cx="15" cy="12" r="1" />
+            <circle cx="15" cy="5" r="1" />
+            <circle cx="15" cy="19" r="1" />
+          </svg>
+        </div>
+        <div id="item" class="item">
+          <div id="tooltip-container" class="tooltip-container">
+            <div id="tooltip" class="tooltip">Hi there!</div>
           </div>
-          <div class="item"></div>
         </div>
-      </section>
-      <section class="control-panel">
-        <h1 class="control-panel-header">
-          Settings
-        </h1>
-        <div class="tooltip-position-container">
-          <label for="tooltip-position" class="tooltip-position-selector-label">Tooltip Position</label>
-          <select name="Tooltip Position" id="tooltip-position" class="tooltip-position-selector">
-            <option value="left">Left</option>
-            <option value="right">Right</option>
-            <option value="top">Top</option>
-            <option value="Bottom">Bottom</option>
-          </select>
-        </div>
-      </section>
+      </div>
+    </section>
+    <section class="control-panel">
+      <h1 class="control-panel-header">Settings</h1>
+      <div class="tooltip-position-container">
+        <label for="tooltip-position" class="tooltip-position-selector-label"
+          >Tooltip Position</label
+        >
+        <select
+          name="Tooltip Position"
+          id="tooltip-position"
+          class="tooltip-position-selector"
+        >
+          <option value="left">Left</option>
+          <option value="right">Right</option>
+          <option value="top">Top</option>
+          <option value="bottom">Bottom</option>
+        </select>
+      </div>
+    </section>
   </body>
 </html>

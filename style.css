@@ -98,6 +98,8 @@ body {
 }
 
 .item {
+    position: relative;
+
     background-color: var(--ITEM-COLOR);
     min-height: var(--ITEM-MIN-HEIGHT);
     min-width: var(--ITEM-MIN-WIDTH);
@@ -108,6 +110,44 @@ body {
     height: var(--ITEM-HEIGHT);
     width: var(--ITEM-WIDTH);
     border-radius: 20px;
+    
+}
+
+.item:hover {
+    scale: 1.02;
+    cursor: move;
+
+    transition-duration: 200ms;
+}
+
+.tooltip {
+    display: none;
+    padding: 10px;
+    max-width: fit-content;
+
+    background-color: #f1d49d;
+    border-radius: 10px;
+}
+
+.tooltip-container {
+    position: absolute;
+}
+
+.tooltip-top {
+    top: -60px;
+    left: 80px;
+}
+.tooltip-bottom {
+    bottom: -60px;
+    left: 80px;
+}
+.tooltip-left {
+    top: 100px;
+    left: -100px;
+}
+.tooltip-right {
+    top: 100px;
+    right: -100px;
 }
 
 .tooltip-position-container {
