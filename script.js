@@ -12,8 +12,8 @@ let isMouseClicked = false;
 let shiftX;
 let shiftY;
 
-item.onmouseover = function (event) {
-  switch (tooltipPosition.value) {
+const displayTooltip = (alignment) => {
+  switch (alignment) {
     case "left":
       tooltip.style.display = "block";
       tooltipContainer.classList.add("tooltip-left");
@@ -33,26 +33,18 @@ item.onmouseover = function (event) {
   }
 };
 
-item.onmouseout = function () {
-  switch (tooltipPosition.value) {
-    case "left":
-      tooltip.style.display = "none";
-      tooltipContainer.classList.remove("tooltip-left");
-      break;
-    case "right":
-      tooltip.style.display = "none";
-      tooltipContainer.classList.remove("tooltip-right");
-      break;
-    case "top":
-      tooltip.style.display = "none";
-      tooltipContainer.classList.remove("tooltip-top");
-      break;
-    case "bottom":
-      tooltip.style.display = "none";
-      tooltipContainer.classList.remove("tooltip-bottom");
-      break;
-  }
+const hideTooltip = () => {
+  tooltip.style.display = "none";
+  tooltipContainer.classList.remove(
+    "tooltip-left",
+    "tooltip-right",
+    "tooltip-top",
+    "tooltip-bottom",
+  );
 };
+
+item.onmouseover = () => displayTooltip(tooltipPosition.value);
+item.onmouseout = hideTooltip;
 
 item.onmousedown = function (event) {
   isMouseClicked = true;
@@ -63,9 +55,11 @@ item.onmousedown = function (event) {
 
   shiftX = event.clientX - item.offsetLeft;
   shiftY = event.clientY - item.offsetTop;
+
+  return (isMouseClicked, shiftX, shiftY);
 };
 
-item.onmousemove = function (event) {
+window.onmousemove = function (event) {
   if (isMouseClicked) {
     mousePosition.textContent = "Moving";
 
@@ -74,7 +68,7 @@ item.onmousemove = function (event) {
   }
 };
 
-tray.onmouseup = function (event) {
+item.onmouseup = function () {
   mousePosition.textContent = "Released.";
   isMouseClicked = false;
 };

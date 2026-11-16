@@ -82,8 +82,6 @@ body {
   align-items: center;
   border: 1px solid var(--TRAY-BG-COLOR);
 
-  transition-duration: 200ms;
-
   border-radius: 5px;
 }
 
@@ -110,18 +108,6 @@ body {
   height: var(--ITEM-HEIGHT);
   width: var(--ITEM-WIDTH);
   border-radius: 20px;
-}
-
-.item:hover {
-  scale: 1.02;
-  cursor: move;
-
-  transition-duration: 200ms;
-}
-
-.item:active {
-  scale: 0.95;
-  cursor: move;
 }
 
 .tooltip {
