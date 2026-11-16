@@ -1,169 +1,171 @@
 :root {
-    --PRIMARY-BACKGROUND-COLOR: #293241;
-    --ITEM-COLOR: #3D5A80;
-    --TRAY-BG-COLOR: #EE6C4D;
+  --PRIMARY-BACKGROUND-COLOR: #293241;
+  --ITEM-COLOR: #3d5a80;
+  --TRAY-BG-COLOR: #ee6c4d;
 
-    --TRAY-HEIGHT: 480px;
-    --TRAY-WIDTH: 640px;
-    --TRAY-MIN-HEIGHT: 320px;
-    --TRAY-MIN-WIDTH: 240px;
-    --TRAY-MAX-HEIGHT: 1280px;
-    --TRAY-MAX-WIDTH: 720px;
+  --TRAY-HEIGHT: 480px;
+  --TRAY-WIDTH: 640px;
+  --TRAY-MIN-HEIGHT: 320px;
+  --TRAY-MIN-WIDTH: 240px;
+  --TRAY-MAX-HEIGHT: 1280px;
+  --TRAY-MAX-WIDTH: 720px;
 
-    --ITEM-HEIGHT: 240px;
-    --ITEM-WIDTH: 240px;
-    --ITEM-MIN-HEIGHT: 240px;
-    --ITEM-MIN-WIDTH: 160px;
-    --ITEM-MAX-HEIGHT: 640px;
-    --ITEM-MAX-WIDTH: 480px;
-
+  --ITEM-HEIGHT: 240px;
+  --ITEM-WIDTH: 240px;
+  --ITEM-MIN-HEIGHT: 240px;
+  --ITEM-MIN-WIDTH: 160px;
+  --ITEM-MAX-HEIGHT: 640px;
+  --ITEM-MAX-WIDTH: 480px;
 }
 
 * {
-    margin: 0;
-    padding: 0px;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--PRIMARY-BACKGROUND-COLOR);
+  background-color: var(--PRIMARY-BACKGROUND-COLOR);
 
-    display: flex;
-    min-height: 100vh;
-    gap: 20px;
-    padding: 10px;
+  display: flex;
+  min-height: 100vh;
+  gap: 20px;
+  padding: 10px;
 }
 
 .sandbox {
-    width: 67%;
+  width: 67%;
+  position: relative;
 
-    border: 1px solid #fff;
-    border-radius: 20px;
+  border: 1px solid #fff;
+  border-radius: 20px;
 }
 
 .control-panel {
-    width: 33%;
-    padding: 20px;
+  width: 33%;
+  padding: 20px;
 
-    border: 1px solid #fff;
-    border-radius: 20px;
+  border: 1px solid #fff;
+  border-radius: 20px;
 }
 
-.control-panel-header {
-    color: #fff;
-    padding-bottom: 20px;
+.control-panel-section-header {
+  color: #fff;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .tray {
-    background-color: var(--TRAY-BG-COLOR);
-    min-height: var(--TRAY-MIN-HEIGHT);
-    min-width: var(--TRAY-MIN-WIDTH);
+  background-color: var(--TRAY-BG-COLOR);
+  min-height: var(--TRAY-MIN-HEIGHT);
+  min-width: var(--TRAY-MIN-WIDTH);
 
-    max-height: var(--TRAY-MAX-HEIGHT);
-    max-width: var(--TRAY-MAX-WIDTH);
+  max-height: var(--TRAY-MAX-HEIGHT);
+  max-width: var(--TRAY-MAX-WIDTH);
 
-    height: var(--TRAY-HEIGHT);
-    width: var(--TRAY-WIDTH);
-    border-radius: 20px;
-    position: relative;
+  height: var(--TRAY-HEIGHT);
+  width: var(--TRAY-WIDTH);
+  border-radius: 20px;
+
+  position: relative;
 }
 
 .tray-handle {
-    position: absolute;
-    right: 20px;
-    top: 20px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 
-    padding: 3px;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--TRAY-BG-COLOR);
+  padding: 3px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--TRAY-BG-COLOR);
 
-    transition-duration: 200ms;
+  transition-duration: 200ms;
 
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .tray-handle:hover {
-    scale: 1.1;
-    cursor: grab;
-    border: 1px solid #f1d49d;
+  scale: 1.1;
+  cursor: grab;
+  border: 1px solid #f1d49d;
 }
 
 .tray-handle:active {
-    scale: 1.1;
-    cursor: grabbing;
-    border: 1px solid #f1d49d;
+  scale: 0.9;
+  cursor: grabbing;
+  border: 1px solid #f1d49d;
 }
 
 .item {
-    position: relative;
+  background-color: var(--ITEM-COLOR);
+  min-height: var(--ITEM-MIN-HEIGHT);
+  min-width: var(--ITEM-MIN-WIDTH);
 
-    background-color: var(--ITEM-COLOR);
-    min-height: var(--ITEM-MIN-HEIGHT);
-    min-width: var(--ITEM-MIN-WIDTH);
+  max-height: var(--ITEM-MAX-HEIGHT);
+  max-width: var(--ITEM-MAX-WIDTH);
 
-    max-height: var(--ITEM-MAX-HEIGHT);
-    max-width: var(--ITEM-MAX-WIDTH);
-
-    height: var(--ITEM-HEIGHT);
-    width: var(--ITEM-WIDTH);
-    border-radius: 20px;
-    
+  height: var(--ITEM-HEIGHT);
+  width: var(--ITEM-WIDTH);
+  border-radius: 20px;
 }
 
 .item:hover {
-    scale: 1.02;
-    cursor: move;
+  scale: 1.02;
+  cursor: move;
 
-    transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+
+.item:active {
+  scale: 0.95;
+  cursor: move;
 }
 
 .tooltip {
-    display: none;
-    padding: 10px;
-    max-width: fit-content;
+  display: none;
+  padding: 10px;
+  max-width: fit-content;
 
-    background-color: #f1d49d;
-    border-radius: 10px;
+  background-color: #f1d49d;
+  border-radius: 10px;
 }
 
 .tooltip-container {
-    position: absolute;
+  position: absolute;
 }
 
 .tooltip-top {
-    top: -60px;
-    left: 80px;
+  top: -60px;
+  left: 80px;
 }
 .tooltip-bottom {
-    bottom: -60px;
-    left: 80px;
+  bottom: -60px;
+  left: 80px;
 }
 .tooltip-left {
-    top: 100px;
-    left: -100px;
+  top: 100px;
+  left: -100px;
 }
 .tooltip-right {
-    top: 100px;
-    right: -100px;
+  top: 100px;
+  right: -100px;
 }
 
 .tooltip-position-container {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .tooltip-position-selector {
-    padding: 6px;
+  padding: 6px;
 
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 .tooltip-position-selector-label {
-    color: #fff;
+  color: #fff;
 }
-
-
