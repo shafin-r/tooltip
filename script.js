@@ -43,8 +43,10 @@ const hideTooltip = () => {
   );
 };
 
-item.addEventListener("mouseover", () => displayTooltip(tooltipPosition.value));
-item.addEventListener("mouseout", hideTooltip);
+item.addEventListener("pointerover", () =>
+  displayTooltip(tooltipPosition.value),
+);
+item.addEventListener("pointerout", hideTooltip);
 
 function calculateOffset(event, el) {
   x = event.clientX - el.offsetLeft;
@@ -58,17 +60,17 @@ function translateElement(el, event, offset) {
   el.style.top = event.clientY - offset.y + "px";
 }
 
-item.addEventListener("mousedown", function (event) {
+item.addEventListener("pointerdown", function (event) {
   isItemClicked = true;
   offset = calculateOffset(event, item);
 });
 
-trayHandle.addEventListener("mousedown", function (event) {
+trayHandle.addEventListener("pointerdown", function (event) {
   isTrayClicked = true;
   offset = calculateOffset(event, tray);
 });
 
-window.onmousemove = function (event) {
+window.addEventListener("pointermove", function (event) {
   if (isItemClicked) {
     translateElement(item, event, offset);
   }
@@ -76,11 +78,12 @@ window.onmousemove = function (event) {
   if (isTrayClicked) {
     translateElement(tray, event, offset);
   }
-};
+});
 
-item.onmouseup = function () {
+item.addEventListener("pointerup", function (event) {
   isItemClicked = false;
-};
-tray.onmouseup = function () {
+});
+
+trayHandle.addEventListener("pointerup", function (event) {
   isTrayClicked = false;
-};
+});
