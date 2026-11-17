@@ -6,12 +6,11 @@ const tooltip = document.querySelector("#tooltip");
 const tooltipContainer = document.querySelector("#tooltip-container");
 const tooltipPosition = document.querySelector("#tooltip-position");
 
-const mousePosition = document.querySelector("#mouse-position");
-
 let isItemClicked = false;
 let isTrayClicked = false;
 let shiftX;
 let shiftY;
+let offset;
 
 const displayTooltip = (alignment) => {
   switch (alignment) {
@@ -44,38 +43,38 @@ const hideTooltip = () => {
   );
 };
 
-item.onmouseover = () => displayTooltip(tooltipPosition.value);
-item.onmouseout = hideTooltip;
+item.addEventListener("mouseover", () => displayTooltip(tooltipPosition.value));
+item.addEventListener("mouseout", hideTooltip);
 
-item.onmousedown = function (event) {
+function calculateOffset(event, el) {
+  x = event.clientX - el.offsetLeft;
+  y = event.clientY - el.offsetTop;
+
+  return { x, y };
+}
+
+function translateElement(el, event, offset) {
+  el.style.left = event.clientX - offset.x + "px";
+  el.style.top = event.clientY - offset.y + "px";
+}
+
+item.addEventListener("mousedown", function (event) {
   isItemClicked = true;
+  offset = calculateOffset(event, item);
+});
 
-  item.style.position = "absolute";
-  item.style.zIndex = 1000;
-
-  shiftX = event.clientX - item.offsetLeft;
-  shiftY = event.clientY - item.offsetTop;
-};
-
-trayHandle.onmousedown = function (event) {
+trayHandle.addEventListener("mousedown", function (event) {
   isTrayClicked = true;
-
-  tray.style.position = "absolute";
-  tray.style.zIndex = 1000;
-
-  shiftX = event.clientX - tray.offsetLeft;
-  shiftY = event.clientY - tray.offsetTop;
-};
+  offset = calculateOffset(event, tray);
+});
 
 window.onmousemove = function (event) {
   if (isItemClicked) {
-    item.style.left = event.clientX - shiftX + "px";
-    item.style.top = event.clientY - shiftY + "px";
+    translateElement(item, event, offset);
   }
 
   if (isTrayClicked) {
-    tray.style.left = event.clientX - shiftX + "px";
-    tray.style.top = event.clientY - shiftY + "px";
+    translateElement(tray, event, offset);
   }
 };
 
