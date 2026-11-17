@@ -8,7 +8,8 @@ const tooltipPosition = document.querySelector("#tooltip-position");
 
 const mousePosition = document.querySelector("#mouse-position");
 
-let isMouseClicked = false;
+let isItemClicked = false;
+let isTrayClicked = false;
 let shiftX;
 let shiftY;
 
@@ -47,28 +48,40 @@ item.onmouseover = () => displayTooltip(tooltipPosition.value);
 item.onmouseout = hideTooltip;
 
 item.onmousedown = function (event) {
-  isMouseClicked = true;
-  mousePosition.textContent = "Clicked";
+  isItemClicked = true;
 
   item.style.position = "absolute";
   item.style.zIndex = 1000;
 
   shiftX = event.clientX - item.offsetLeft;
   shiftY = event.clientY - item.offsetTop;
+};
 
-  return (isMouseClicked, shiftX, shiftY);
+trayHandle.onmousedown = function (event) {
+  isTrayClicked = true;
+
+  tray.style.position = "absolute";
+  tray.style.zIndex = 1000;
+
+  shiftX = event.clientX - tray.offsetLeft;
+  shiftY = event.clientY - tray.offsetTop;
 };
 
 window.onmousemove = function (event) {
-  if (isMouseClicked) {
-    mousePosition.textContent = "Moving";
-
+  if (isItemClicked) {
     item.style.left = event.clientX - shiftX + "px";
     item.style.top = event.clientY - shiftY + "px";
+  }
+
+  if (isTrayClicked) {
+    tray.style.left = event.clientX - shiftX + "px";
+    tray.style.top = event.clientY - shiftY + "px";
   }
 };
 
 item.onmouseup = function () {
-  mousePosition.textContent = "Released.";
-  isMouseClicked = false;
+  isItemClicked = false;
+};
+tray.onmouseup = function () {
+  isTrayClicked = false;
 };
